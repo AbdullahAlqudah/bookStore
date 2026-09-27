@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Interactive Text Editor</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            width: 80%;
+            margin: 50px auto;
+        }
+
+        #textArea {
+            background-color: cyan;
+            color: darkred;
+            font-size: 47px;
+            font-family: Georgia;
+            padding: 20px;
+            min-height: 70px;
+            margin-bottom: 20px;
+        }
+
+        button,
+        input,
+        select {
+            margin: 5px;
+            padding: 8px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Interactive Text Editor</h1>
+
+
+    <!-- Target Text -->
+
+    <div id="textArea">
+        HELLO
+    </div>
+
+
+    <!-- Bold and Italic -->
+
+    <button id="boldButton">
+        Bold
+    </button>
+
+    <button id="italicButton">
+        Italic
+    </button>
+
+
+    <br>
+
+
+    <!-- Alignment -->
+
+    <button id="leftButton">
+        Left
+    </button>
+
+    <button id="centerButton">
+        Center
+    </button>
+
+    <button id="rightButton">
+        Right
+    </button>
+
+
+    <br>
+
+
+    <!-- Text Case -->
+
+    <button id="upperButton">
+        Upper Case
+    </button>
+
+    <button id="lowerButton">
+        Lower Case
+    </button>
+
+    <button id="capitalizeButton">
+        Capitalize
+    </button>
+
+    <button id="clearButton">
+        Clear Text
+    </button>
+
+
+    <br><br>
+
+
+    <!-- Text Color -->
+
+    <label for="textColor">
+        Text Color:
+    </label>
+
+    <input
+        type="color"
+        id="textColor"
+        value="#8B0000"
+    >
+
+
+    <!-- Background Color -->
+
+    <label for="backgroundColor">
+        Background Color:
+    </label>
+
+    <input
+        type="color"
+        id="backgroundColor"
+        value="#00FFFF"
+    >
+
+
+    <br><br>
+
+
+    <!-- Font Size -->
+
+    <label for="fontSize">
+        Font Size:
+    </label>
+
+    <input
+        type="number"
+        id="fontSize"
+        value="47"
+    >
+
+
+    <!-- Font Family -->
+
+    <label for="fontFamily">
+        Font Family:
+    </label>
+
+    <select id="fontFamily">
+
+        <option value="Georgia">
+            Georgia
+        </option>
+
+        <option value="Arial">
+            Arial
+        </option>
+
+        <option value="Times New Roman">
+            Times New Roman
+        </option>
+
+    </select>
+
+
+    <script src="editor.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Test Scores</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            width: 600px;
+            margin: 50px auto;
+        }
+
+        input,
+        button {
+            padding: 8px;
+            margin: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Test Score Array</h1>
+
+    <label>Name:</label>
+    <input type="text" id="name">
+
+    <br>
+
+    <label>Score:</label>
+    <input type="number" id="score">
+
+    <br>
+
+    <button id="addScore">
+        Add to Array
+    </button>
+
+    <button id="displayResults">
+        Display Results
+    </button>
+
+    <button id="displayScores">
+        Display Scores
+    </button>
+
+
+    <div id="results"></div>
+
+
+    <table id="scores_table">
+
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+
+        <tbody id="scoresBody"></tbody>
+
+    </table>
+
+
+    <script src="scores.js"></script>
+
+</body>
+
+</html>

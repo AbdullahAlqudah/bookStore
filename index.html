@@ -1,8 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Bookstore & Reading Club</title>
 
     <link rel="stylesheet" href="style.css">
@@ -10,13 +13,17 @@
 
 <body>
 
+    <!-- Header -->
     <header>
         <h1>Bookstore & Reading Club</h1>
         <p>Discover books, join our community, and enjoy reading.</p>
     </header>
 
+    <!-- Main Content -->
     <main>
+
         <section class="hero">
+
             <h2>Welcome to Our Bookstore</h2>
 
             <p>
@@ -24,17 +31,70 @@
                 favorite book.
             </p>
 
-            <button onclick="registerMember()">
-                Join Reading Club
-            </button>
+            <!-- Registration Form -->
+            <form id="bookForm">
+
+                <!-- Username -->
+                <label for="username">Username:</label>
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Enter your name"
+                >
+
+                <!-- Membership Type -->
+                <label for="membership">Membership Type:</label>
+
+                <select id="membership">
+                    <option value="">Select Membership</option>
+                    <option value="student">Student</option>
+                    <option value="regular">Regular</option>
+                </select>
+
+                <!-- Book Genre -->
+                <label for="genre">Book Genre:</label>
+
+                <select id="genre">
+                    <option value="">Select Genre</option>
+                    <option value="Fiction">Fiction</option>
+                    <option value="Non-Fiction">Non-Fiction</option>
+                    <option value="Science">Science</option>
+                    <option value="History">History</option>
+                    <option value="Biography">Biography</option>
+                    <option value="Technology">Technology</option>
+                </select>
+
+                <!-- Book Title -->
+                <label for="bookTitle">Book Title:</label>
+
+                <input
+                    type="text"
+                    id="bookTitle"
+                    placeholder="Enter book title"
+                >
+
+                <!-- Submit Button -->
+                <button type="submit">
+                    Join Reading Club
+                </button>
+
+            </form>
+
+            <!-- Result Container -->
+            <div id="result-card"></div>
+
         </section>
+
     </main>
 
+    <!-- Footer -->
     <footer>
         <p>&copy; 2026 Bookstore & Reading Club</p>
     </footer>
 
+    <!-- JavaScript -->
     <script src="app.js"></script>
 
 </body>
+
 </html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registration Form</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 40px;
+        }
+
+        .container {
+            width: 400px;
+            margin: auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        #successMessage {
+            color: green;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Register</h2>
+
+        <form id="registerForm">
+
+            <!-- Username -->
+
+            <label for="username">
+                Username
+            </label>
+
+            <input
+                type="text"
+                id="username"
+            >
+
+            <span
+                id="usernameError"
+                class="error">
+            </span>
+
+
+            <!-- Password -->
+
+            <label for="password">
+                Password
+            </label>
+
+            <input
+                type="password"
+                id="password"
+            >
+
+            <span
+                id="passwordError"
+                class="error">
+            </span>
+
+
+            <!-- Confirm Password -->
+
+            <label for="confirmPassword">
+                Confirm Password
+            </label>
+
+            <input
+                type="password"
+                id="confirmPassword"
+            >
+
+            <span
+                id="confirmPasswordError"
+                class="error">
+            </span>
+
+
+            <!-- Register Button -->
+
+            <button
+                type="submit"
+                id="registerButton"
+                disabled>
+                Register
+            </button>
+
+        </form>
+
+
+        <!-- Success Message -->
+
+        <p id="successMessage"></p>
+
+    </div>
+
+
+    <script src="basic.js"></script>
+
+</body>
+
+</html>

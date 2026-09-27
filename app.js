@@ -1,168 +1,227 @@
+
 // =========================
-// EX2 - Loops and Functions
+// EX3 - Events and DOM
+// Bookstore & Reading Club
 // =========================
 
 
-// Function to validate membership type
-function getValidMembership() {
+// =========================
+// 1. Select HTML Elements
+// =========================
 
-    let membership = prompt(
-        "Enter your membership type: student or regular"
-    );
+let form = document.getElementById("bookForm");
 
-    membership = membership.toLowerCase();
+let usernameInput = document.getElementById("username");
 
-    // Keep asking until the user enters a valid membership
-    while (membership !== "student" && membership !== "regular") {
+let membershipInput = document.getElementById("membership");
 
-        alert("Invalid membership type!");
+let genreInput = document.getElementById("genre");
 
-        membership = prompt(
-            "Please enter student or regular"
-        );
+let bookTitleInput = document.getElementById("bookTitle");
 
-        membership = membership.toLowerCase();
+let resultCard = document.getElementById("result-card");
+
+
+// =========================
+// 2. Arrays
+// =========================
+
+// Store user information
+let userData = [];
+
+// Available book genres
+let availableGenres = [
+    "Fiction",
+    "Non-Fiction",
+    "Science",
+    "History",
+    "Biography",
+    "Technology"
+];
+
+
+// =========================
+// 3. Form Submit Event
+// =========================
+
+form.addEventListener("submit", function(event) {
+
+    // Prevent page refresh
+    event.preventDefault();
+
+
+    // Get input values
+    let username = usernameInput.value.trim();
+
+    let membership = membershipInput.value;
+
+    let genre = genreInput.value;
+
+    let bookTitle = bookTitleInput.value.trim();
+
+
+    // =========================
+    // 4. Validation
+    // =========================
+
+    // Check empty fields
+    if (
+        username === "" ||
+        membership === "" ||
+        genre === "" ||
+        bookTitle === ""
+    ) {
+
+        resultCard.innerHTML =
+            "<p>Please fill in all fields.</p>";
+
+        return;
     }
 
-    return membership;
-}
 
+    // Validate membership type
+    if (
+        membership !== "student" &&
+        membership !== "regular"
+    ) {
 
-// Function to collect user data
-function registerMember() {
+        resultCard.innerHTML =
+            "<p>Invalid membership type!</p>";
 
-    // Ask for user's name
-    let userName = prompt("Enter your name:");
-
-
-    // Get valid membership type
-    let membership = getValidMembership();
-
-
-    // Welcome message based on membership type
-    if (membership === "student") {
-
-        alert("Welcome Scholar " + userName);
-
-    } 
-    else if (membership === "regular") {
-
-        alert("Welcome Member " + userName);
-
+        return;
     }
 
 
-    // Ask for book genre
-    let genre = prompt(
-        "Do you prefer fiction or non-fiction?"
-    );
+    // Validate book genre
+    if (!availableGenres.includes(genre)) {
+
+        resultCard.innerHTML =
+            "<p>Please select a valid book genre.</p>";
+
+        return;
+    }
 
 
-    // Ask for book title
-    let bookTitle = prompt(
-        "Enter the title of the book you want to borrow:"
-    );
+    // =========================
+    // 5. Store Data in Array
+    // =========================
 
-
-    // Reservation message
-    alert(
-        "Your requested book \"" +
-        bookTitle +
-        "\" is being reserved."
-    );
-
-
-    // Store all user data in an array
-    let userData = [
-        userName,
+    userData = [
+        username,
         membership,
         genre,
         bookTitle
     ];
 
 
-    // Print each element of the array
-    for (let i = 0; i < userData.length; i++) {
+    // =========================
+    // 6. Display Results
+    // =========================
 
-        console.log(userData[i]);
+    displayUserData();
 
-    }
+});
 
-
-    // Return the array for later use in EX3
-    return userData;
-}
 
 // =========================
-// EX3 - Arrays
+// 7. Display User Data
 // =========================
 
+function displayUserData() {
 
-// 1. Available book genres
-let availableGenres = [
-    "Fiction",
-    "Science",
-    "History",
-    "Biography"
-];
+    // Clear previous results
+    resultCard.innerHTML = "";
 
 
-// 2. Apply discount based on membership type
-function applyDiscount(userData) {
+    // Create heading
+    let heading = document.createElement("h3");
 
-    // Membership type is at index 1
+    heading.textContent = "Registration Successful!";
+
+    resultCard.appendChild(heading);
+
+
+    // =========================
+    // Welcome Message
+    // =========================
+
+    let welcomeMessage = document.createElement("p");
+
     if (userData[1] === "student") {
 
-        userData.push("20% Discount");
+        welcomeMessage.textContent =
+            "Welcome Scholar " + userData[0];
 
-    } 
-    else if (userData[1] === "regular") {
+    } else {
 
-        userData.push("No Discount");
-
-    }
-
-    return userData;
-}
-
-
-// Apply the discount to the user from EX2
-userData = applyDiscount(userData);
-
-console.log("User Data After Discount:");
-
-for (let i = 0; i < userData.length; i++) {
-    console.log(userData[i]);
-}
-
-
-// 3. Add a new genre
-function addNewGenre(genre) {
-
-    availableGenres.push(genre);
-
-}
-
-
-// Example: add a new genre
-addNewGenre("Technology");
-
-
-// 4. Display all available genres
-function displayGenres() {
-
-    for (let i = 0; i < availableGenres.length; i++) {
-
-        console.log("- We offer: " + availableGenres[i]);
+        welcomeMessage.textContent =
+            "Welcome Member " + userData[0];
 
     }
 
+    resultCard.appendChild(welcomeMessage);
+
+
+    // =========================
+    // Display Array Data
+    // =========================
+
+    let labels = [
+        "Username: ",
+        "Membership: ",
+        "Book Genre: ",
+        "Book Title: "
+    ];
+
+
+    // Loop through user data
+    for (let i = 0; i < userData.length; i++) {
+
+        // Create paragraph
+        let paragraph = document.createElement("p");
+
+        // Add text
+        paragraph.textContent =
+            labels[i] + userData[i];
+
+        // Append paragraph
+        resultCard.appendChild(paragraph);
+
+    }
+
+
+    // =========================
+    // Reservation Message
+    // =========================
+
+    let reservationMessage = document.createElement("p");
+
+    reservationMessage.textContent =
+        'Your requested book "' +
+        userData[3] +
+        '" is being reserved.';
+
+    resultCard.appendChild(reservationMessage);
+
+
+    // =========================
+    // Membership Discount
+    // =========================
+
+    let discountMessage = document.createElement("p");
+
+    if (userData[1] === "student") {
+
+        discountMessage.textContent =
+            "You have received a 20% discount!";
+
+    } else {
+
+        discountMessage.textContent =
+            "No discount available for regular members.";
+
+    }
+
+    resultCard.appendChild(discountMessage);
+
 }
-
-
-// Display genres
-displayGenres();
-
-
-// Run the function
-let userData = registerMember();
